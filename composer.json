@@ -1,15 +1,13 @@
 {
-    "name": "apy/breadcrumbtrail-bundle",
+    "name": "rammaster/breadcrumbtrail-bundle",
     "type": "symfony-bundle",
     "description": "Symfony bundle to generate a dynamic Twig breadcrumbs trail via Annotations, PHP Attributes or PHP methods.",
     "keywords": ["symfony", "breadcrumb Trail", "breadcrumbs", "fil ariane", "annotation"],
     "homepage": "https://github.com/Abhoryo/APYBreadcrumbTrailBundle",
     "license": "MIT",
     "require": {
-        "php": ">=7.2",
-        "symfony/framework-bundle": "^4.4|^5.0|^6.0",
-        "twig/twig": "^2.15|^3.0",
-        "symfony/deprecation-contracts": "^2.4|^3.0"
+        "php": ">=8.3",
+        "twig/twig": "^2.15|^3.0"
     },
     "scripts": {
         "test": "vendor/bin/simple-phpunit --testdox"
@@ -22,12 +20,12 @@
         "psr-4": { "APY\\BreadcrumbTrailBundle\\": "src/" }
     },
     "require-dev": {
-        "symfony/phpunit-bridge": "^5.0|^6.0",
+        "symfony/phpunit-bridge": "^6.4|^7.0",
         "nyholm/symfony-bundle-test": "^v2.0",
         "matthiasnoback/symfony-dependency-injection-test": "^4.0",
-        "doctrine/doctrine-bundle": "^v1.0|^v2.0",
-        "doctrine/annotations": "^v1.7",
-        "symfony/twig-bundle": "^3.4|^4.0|^5.0|^6.0"
+        "doctrine/doctrine-bundle": "^v2.0",
+        "doctrine/annotations": "^v2.0",
+        "symfony/twig-bundle": "^6.4|^7.0"
     },
     "autoload-dev": {
         "psr-4": { "APY\\BreadcrumbTrailBundle\\": "tests/" }
