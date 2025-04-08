@@ -1,5 +1,5 @@
 {
-    "name": "rammaster/breadcrumbtrail-bundle",
+    "name": "rampmaster/breadcrumbtrail-bundle",
     "type": "symfony-bundle",
     "description": "Symfony bundle to generate a dynamic Twig breadcrumbs trail via Annotations, PHP Attributes or PHP methods.",
     "keywords": ["symfony", "breadcrumb Trail", "breadcrumbs", "fil ariane", "annotation"],
