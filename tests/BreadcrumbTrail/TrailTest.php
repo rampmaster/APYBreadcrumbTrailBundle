@@ -1,7 +1,9 @@
 <?php
 
-namespace APY\BreadcrumbTrailBundle\BreadcrumbTrail;
+namespace APY\BreadcrumbTrailBundle\Tests\BreadcrumbTrail;
 
+use APY\BreadcrumbTrailBundle\BreadcrumbTrail\Breadcrumb;
+use APY\BreadcrumbTrailBundle\BreadcrumbTrail\Trail;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RequestStack;
@@ -19,7 +21,7 @@ class TrailTest extends TestCase
             'user' => new User($expected),
         ]));
 
-        $trail = new Trail($router, $requestStack);
+        $trail = new Trail($router, $requestStack,);
         $trail->add('{user.name}');
 
         $iterator = $trail->getIterator();

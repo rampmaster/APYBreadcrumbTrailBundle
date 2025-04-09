@@ -22,27 +22,14 @@ class Trail implements \IteratorAggregate, \Countable
     private $breadcrumbs;
 
     /**
-     * @var UrlGeneratorInterface URL generator class
-     */
-    private $router;
-
-    /**
-     * @var RequestStack
-     */
-    private $requestStack;
-
-    /**
-     * @var string Template to render the breadcrumb trail
-     */
-    private $template;
-
-    /**
      * @param UrlGeneratorInterface $router URL generator class
      */
-    public function __construct(UrlGeneratorInterface $router, RequestStack $requestStack)
+    public function __construct(
+        private readonly UrlGeneratorInterface $router,
+        private readonly RequestStack $requestStack,
+        private string $template = '@APYBreadcrumbTrail/breadcrumbtrail.html.twig',
+    )
     {
-        $this->router = $router;
-        $this->requestStack = $requestStack;
         $this->breadcrumbs = new \SplObjectStorage();
     }
 

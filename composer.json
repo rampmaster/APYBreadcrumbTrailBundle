@@ -30,6 +30,6 @@
         "symfony/twig-bundle": "^6.4|^7.0"
     },
     "autoload-dev": {
-        "psr-4": { "APY\\BreadcrumbTrailBundle\\": "tests/" }
+        "psr-4": { "APY\\BreadcrumbTrailBundle\\Tests\\": "tests/" }
     }
 }

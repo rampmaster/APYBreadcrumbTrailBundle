@@ -1,8 +1,9 @@
 <?php
 
-namespace APY\BreadcrumbTrailBundle\Twig;
+namespace APY\BreadcrumbTrailBundle\Tests\Twig;
 
 use APY\BreadcrumbTrailBundle\APYBreadcrumbTrailBundle;
+use APY\BreadcrumbTrailBundle\Twig\BreadcrumbTrailExtension;
 use Nyholm\BundleTest\TestKernel;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 use Symfony\Bundle\TwigBundle\TwigBundle;

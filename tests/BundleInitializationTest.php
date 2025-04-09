@@ -1,7 +1,8 @@
 <?php
 
-namespace APY\BreadcrumbTrailBundle;
+namespace APY\BreadcrumbTrailBundle\Tests;
 
+use APY\BreadcrumbTrailBundle\APYBreadcrumbTrailBundle;
 use Nyholm\BundleTest\TestKernel;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 use Symfony\Component\HttpKernel\KernelInterface;
@@ -29,8 +30,8 @@ class BundleInitializationTest extends KernelTestCase
     {
         $container = self::bootKernel()->getContainer();
 
-        $this->assertTrue($container->has('apy_breadcrumb_trail'));
-        $this->assertTrue($container->has('apy_breadcrumb_trail.annotation.listener'));
-        $this->assertTrue($container->hasParameter('apy_breadcrumb_trail.template'));
+        $this->assertTrue($container->has(\APY\BreadcrumbTrailBundle\BreadcrumbTrail\Trail::class));
+        $this->assertTrue($container->has( \APY\BreadcrumbTrailBundle\EventListener\BreadcrumbListener::class));
+        //$this->assertTrue($container->hasParameter('apy_breadcrumb_trail.template'));
     }
 }

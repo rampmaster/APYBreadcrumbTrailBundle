@@ -1,7 +1,8 @@
 <?php
 
-namespace APY\BreadcrumbTrailBundle\Annotation;
+namespace APY\BreadcrumbTrailBundle\Tests\Annotation;
 
+use APY\BreadcrumbTrailBundle\Annotation\Breadcrumb;
 use PHPUnit\Framework\TestCase;
 
 class BreadcrumbTest extends TestCase

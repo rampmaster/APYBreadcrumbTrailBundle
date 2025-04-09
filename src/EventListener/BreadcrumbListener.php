@@ -14,7 +14,6 @@ namespace APY\BreadcrumbTrailBundle\EventListener;
 use APY\BreadcrumbTrailBundle\Annotation\Breadcrumb;
 use APY\BreadcrumbTrailBundle\Annotation\ResetBreadcrumbTrail;
 use APY\BreadcrumbTrailBundle\BreadcrumbTrail\Trail;
-use APY\BreadcrumbTrailBundle\MixedAnnotationWithAttributeBreadcrumbsException;
 use Doctrine\Common\Annotations\Reader;
 use Symfony\Component\HttpKernel\Event\KernelEvent;
 use Symfony\Component\HttpKernel\HttpKernelInterface;
@@ -49,7 +48,7 @@ class BreadcrumbListener
     }
 
     /**
-     * @param \Symfony\Component\HttpKernel\Event\FilterControllerEvent|\Symfony\Component\HttpKernel\Event\ControllerEvent $event
+     * @param \Symfony\Component\HttpKernel\Event\ControllerEvent $event
      */
     public function onKernelController(KernelEvent $event)
     {
@@ -67,44 +66,18 @@ class BreadcrumbListener
         }
 
         if ($class->isAbstract()) {
-            throw new \InvalidArgumentException(sprintf('Annotations from class "%s" cannot be read as it is abstract.', $class));
+            throw new \InvalidArgumentException(sprintf('Attributes from class "%s" cannot be read as it is abstract.', $class));
         }
 
-        if (HttpKernelInterface::MASTER_REQUEST == $event->getRequestType()) {
+        if (HttpKernelInterface::MAIN_REQUEST == $event->getRequestType()) {
             $this->breadcrumbTrail->reset();
 
-            // Annotations from class
-            $classBreadcrumbs = $this->reader->getClassAnnotations($class);
-            if ($this->supportsLoadingAttributes()) {
-                $classAttributeBreadcrumbs = $this->getAttributes($class);
-                if (\count($classBreadcrumbs) > 0) {
-                    trigger_deprecation('apy/breadcrumb-bundle', '1.7', 'Please replace the annotations in "%s" with attributes. Adding Breadcrumbs via annotations is deprecated and will be removed in v2.0, but luckily your platform supports using Attributes.', $class->name);
-                }
-                if (\count($classAttributeBreadcrumbs) > 0) {
-                    if (\count($classBreadcrumbs) > 0) {
-                        throw MixedAnnotationWithAttributeBreadcrumbsException::forClass($class->name);
-                    }
-                    $classBreadcrumbs = $classAttributeBreadcrumbs;
-                }
-            }
-            $this->addBreadcrumbsToTrail($classBreadcrumbs);
+            $classAttributeBreadcrumbs = $this->getAttributes($class);
+            $this->addBreadcrumbsToTrail($classAttributeBreadcrumbs);
 
-            // Annotations from method
             $method = $class->getMethod($reflectableMethod);
-            $methodBreadcrumbs = $this->reader->getMethodAnnotations($method);
-            if ($this->supportsLoadingAttributes()) {
-                $methodAttributeBreadcrumbs = $this->getAttributes($method);
-                if (\count($methodBreadcrumbs) > 0) {
-                    trigger_deprecation('apy/breadcrumb-bundle', '1.7', 'Please replace the annotations in "%s" with attributes. Adding Breadcrumbs via annotations is deprecated and will be removed in v2.0, but luckily your platform supports using Attributes.', $class->name.'::'.$method->name);
-                }
-                if (\count($methodAttributeBreadcrumbs) > 0) {
-                    if (\count($methodBreadcrumbs) > 0) {
-                        throw MixedAnnotationWithAttributeBreadcrumbsException::forClassMethod($class->name, $method->name);
-                    }
-                    $methodBreadcrumbs = $methodAttributeBreadcrumbs;
-                }
-            }
-            $this->addBreadcrumbsToTrail($methodBreadcrumbs);
+            $methodAttributeBreadcrumbs = $this->getAttributes($method);
+            $this->addBreadcrumbsToTrail($methodAttributeBreadcrumbs);
         }
     }
 

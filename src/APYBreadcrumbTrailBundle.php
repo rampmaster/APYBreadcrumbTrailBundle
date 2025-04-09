@@ -30,8 +30,12 @@ class APYBreadcrumbTrailBundle extends AbstractBundle
 
     public function loadExtension(array $config, ContainerConfigurator $container, ContainerBuilder $builder): void
     {
+        // load an XML, PHP or YAML file
+        $container->import('../config/services.yaml');
+
         $container->services()
-            ->get('apy_breadcrumb_trail')
-            ->arg(0, $config['template']);
+            ->get(\APY\BreadcrumbTrailBundle\BreadcrumbTrail\Trail::class)
+            //->arg(0, $config['template'])
+        ;
     }
 }

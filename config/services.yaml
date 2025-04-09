@@ -1,0 +1,20 @@
+services:
+  _defaults:
+    public: false
+    autoconfigure: true
+    autowire: true
+
+  APY\BreadcrumbTrailBundle\:
+    resource: '../src/'
+    exclude:
+      - '../src/Annotation/'
+
+  APY\BreadcrumbTrailBundle\BreadcrumbTrail\Trail:
+    public: true
+#    arguments:
+#      $template: "%apy_breadcrumb_trail.template%"
+
+  APY\BreadcrumbTrailBundle\EventListener\BreadcrumbListener:
+    public: true
+    tags:
+      - { name: kernel.event_listener, event: "kernel.controller", method: "onKernelController", priority: -1 }

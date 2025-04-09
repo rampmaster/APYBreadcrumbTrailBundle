@@ -1,6 +1,6 @@
 <?php
 
-namespace APY\BreadcrumbTrailBundle\Fixtures;
+namespace APY\BreadcrumbTrailBundle\Tests\Fixtures;
 
 use APY\BreadcrumbTrailBundle\Annotation\Breadcrumb;
 use APY\BreadcrumbTrailBundle\Annotation\ResetBreadcrumbTrail;

@@ -1,6 +1,6 @@
 <?php
 
-namespace APY\BreadcrumbTrailBundle;
+namespace APY\BreadcrumbTrailBundle\Tests;
 
 use APY\BreadcrumbTrailBundle\BreadcrumbTrail\Trail;
 use APY\BreadcrumbTrailBundle\DependencyInjection\APYBreadcrumbTrailExtension;
