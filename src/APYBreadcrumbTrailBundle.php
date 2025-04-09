@@ -11,8 +11,8 @@
 
 namespace APY\BreadcrumbTrailBundle;
 
-use Symfony\Component\HttpKernel\Bundle\Bundle;
+use Symfony\Component\HttpKernel\Bundle\AbstractBundle;
 
-class APYBreadcrumbTrailBundle extends Bundle
+class APYBreadcrumbTrailBundle extends AbstractBundle
 {
 }
