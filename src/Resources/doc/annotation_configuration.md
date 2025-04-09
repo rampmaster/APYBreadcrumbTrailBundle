@@ -9,28 +9,6 @@ documentation will use attributes.
 
 ## Basic example
 
-### Annotations
-
-```php
-use APY\BreadcrumbTrailBundle\Annotation\Breadcrumb;
-
-/**
- * @Breadcrumb("Level 1")
- * @Breadcrumb("Level 2")
- */
-class MyController extends Controller
-{
-    /**
-     * @Breadcrumb("Level 3")
-     * @Breadcrumb("Level 4")
-     */
-    public function myAction()
-    {
-        /* Awesome code here */
-    }
-}
-```
-
 ### PHP 8 Attributes
 
 ```php
