@@ -22,12 +22,9 @@ class Configuration implements ConfigurationInterface
 
         $treeBuilder->getRootNode()
             ->children()
-            ->arrayNode('twitter')
-            ->children()
-            ->integerNode('client_id')->end()
-            ->scalarNode('client_secret')->end()
-            ->end()
-            ->end() // twitter
+                ->scalarNode('template')
+                    ->defaultValue('@APYBreadcrumbTrail/breadcrumbtrail.html.twig')
+                ->end() // template
             ->end()
         ;
 
